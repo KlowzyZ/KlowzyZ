@@ -1,0 +1,63 @@
+name: README download-link policy
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readme-links:
+    name: No clickable release or binary links in README
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check README links
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          import re
+          import sys
+
+          url_pattern = re.compile(r"https?://[^\s<>'\"\x60)\]]+", re.IGNORECASE)
+          archive_pattern = re.compile(r"\.(?:exe|msi|msix|zip|7z|rar|apk|dmg|deb|rpm|pdb)$", re.IGNORECASE)
+          release_path_pattern = re.compile(r"^/[^/]+/[^/]+/releases(?:/|$)", re.IGNORECASE)
+          relative_release_pattern = re.compile(
+              r"(?:\]\(|href\s*=\s*['\"])\s*(?:\./|\.\./)+releases(?:[/#?]|['\"\s)])",
+              re.IGNORECASE,
+          )
+          exclusions = {".git", "node_modules", "bin", "obj", ".venv", "dist", "artifacts"}
+          violations = []
+          checked = 0
+
+          for path in Path(".").rglob("*.md"):
+              if not path.name.lower().startswith("readme") or any(part in exclusions for part in path.parts):
+                  continue
+              checked += 1
+              for line_no, line in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+                  for match in url_pattern.finditer(line):
+                      raw = match.group(0).rstrip(".,;:!?")
+                      url = urlsplit(raw)
+                      host = (url.hostname or "").lower()
+                      release_link = host in {"github.com", "www.github.com"} and release_path_pattern.match(url.path)
+                      binary_link = archive_pattern.search(url.path)
+                      if release_link or binary_link:
+                          reason = "GitHub Releases" if release_link else "direct binary/archive"
+                          violations.append(f"{path}:{line_no}: {reason} URL not allowed in README: {raw}")
+                  if relative_release_pattern.search(line):
+                      violations.append(f"{path}:{line_no}: relative Releases link not allowed in README")
+
+          if violations:
+              print("README policy failed. Keep executable packages as GitHub Release assets;")
+              print("describe how to use the repository's Releases tab without clickable links in README.")
+              print("\n".join(violations))
+              sys.exit(1)
+
+          print(f"README download-link policy passed ({checked} README file(s)).")
+          PY
