@@ -28,13 +28,15 @@ My focus is on tools that solve real problems: diagnosing disks, finding devices
 
 | Project | What it does | GitHub |
 | :-- | :-- | :-- |
-| **[OZFA Disk Control](https://klowzy.com/ozfa-disk-control)** | Disk diagnostics, health history, testing, and management for technicians. | [Releases](https://github.com/KlowzyZ/OZFA-Disk-Control-Releases/releases) |
-| **[SightSweep](https://klowzy.com/sightsweep)** | Evidence-based IP discovery for local networks, cameras, NVRs, and DVRs. | [Releases](https://github.com/KlowzyZ/SightSweep/releases) |
-| **[LanternDrop](https://klowzy.com/lantern-drop)** | Transfer files and text between Windows and a phone over a local network. | [Releases](https://github.com/KlowzyZ/LanternDrop/releases) |
-| **[DiskLedger](https://klowzy.com/diskledger)** | Recognize drives and track their health history across inspections. | [Releases](https://github.com/KlowzyZ/DiskLedger/releases) |
-| **[OZFA Quick Formatter](https://klowzy.com/ozfa-quick-formatter)** | Prepare multiple eligible non-system disks with built-in safety checks. | [Releases](https://github.com/KlowzyZ/OZFA-Quick-Formatter/releases) |
-| **[Özfa ODM](https://klowzy.com/ozfa-odm)** | Discover and manage supported ONVIF cameras and recorders. | [Releases](https://github.com/KlowzyZ/OzfaODM-Releases/releases) |
-| **[PanoBox](https://klowzy.com/panobox)** | Local clipboard history, search, text templates, and quick paste for Windows. | [Releases](https://github.com/KlowzyZ/PanoBox-Releases/releases) |
+| **[OZFA Disk Control](https://klowzy.com/ozfa-disk-control)** | Disk diagnostics, health history, testing, and management for technicians. | [Repository](https://github.com/KlowzyZ/OZFA-Disk-Control-Releases) |
+| **[SightSweep](https://klowzy.com/sightsweep)** | Evidence-based IP discovery for local networks, cameras, NVRs, and DVRs. | [Repository](https://github.com/KlowzyZ/SightSweep) |
+| **[LanternDrop](https://klowzy.com/lantern-drop)** | Transfer files and text between Windows and a phone over a local network. | [Repository](https://github.com/KlowzyZ/LanternDrop) |
+| **[DiskLedger](https://klowzy.com/diskledger)** | Recognize drives and track their health history across inspections. | [Repository](https://github.com/KlowzyZ/DiskLedger) |
+| **[OZFA Quick Formatter](https://klowzy.com/ozfa-quick-formatter)** | Prepare multiple eligible non-system disks with built-in safety checks. | [Repository](https://github.com/KlowzyZ/OZFA-Quick-Formatter) |
+| **[Özfa ODM](https://klowzy.com/ozfa-odm)** | Discover and manage supported ONVIF cameras and recorders. | [Repository](https://github.com/KlowzyZ/OzfaODM-Releases) |
+| **[PanoBox](https://klowzy.com/panobox)** | Local clipboard history, search, text templates, and quick paste for Windows. | [Repository](https://github.com/KlowzyZ/PanoBox-Releases) |
+
+For downloads, visit each repository and open its Releases tab.
 
 **Explore all software:** [klowzy.com/projects](https://klowzy.com/projects) — product pages, documentation, downloads, and release history.
 
